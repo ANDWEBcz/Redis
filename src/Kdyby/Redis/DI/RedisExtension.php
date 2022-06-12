@@ -117,7 +117,7 @@ class RedisExtension extends \Nette\DI\CompilerExtension
 		$builder = $this->getContainerBuilder();
 
 		// overwrite
-		$journalService = $builder->getByType(\Nette\Caching\Storages\IJournal::class) ?: 'nette.cacheJournal';
+		$journalService = /*$builder->getByType(\Nette\Caching\Storages\IJournal::class) ?:*/ 'nette.cacheJournal';
 		$builder->removeDefinition($journalService);
 		$builder->addDefinition($journalService)->setFactory($this->prefix('@cacheJournal'));
 
@@ -140,7 +140,7 @@ class RedisExtension extends \Nette\DI\CompilerExtension
 			'locks' => TRUE,
 		]);
 
-		$storageService = $builder->getByType(\Nette\Caching\Storage::class) ?: 'cacheStorage';
+		$storageService = /*$builder->getByType(\Nette\Caching\Storage::class) ?:*/ 'cacheStorage';
 		$builder->removeDefinition($storageService);
 		$builder->addDefinition($storageService)->setFactory($this->prefix('@cacheStorage'));
 
